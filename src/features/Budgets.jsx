@@ -1,8 +1,13 @@
+import Budget from "../components/Budget";
 
 
 const Budgets = () => {
     return (
-        <div>Budgets</div>
+        <ul className='comments-container'>
+            <Budget />
+            <Budget />
+            <Budget />
+        </ul>
     )
 }
 

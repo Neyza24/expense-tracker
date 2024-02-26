@@ -1,8 +1,13 @@
+import TransactionForm from "../components/TransactionForm";
+import TransactionList from "../components/TransactionList";
 
 
 const Transactions = () => {
     return (
-        <div>Transactions</div>
+        <div className='comments-container'>
+            <TransactionList />
+            <TransactionForm />
+        </div>
     )
 }
 
