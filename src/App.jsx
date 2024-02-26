@@ -5,11 +5,11 @@ import Transactions from './features/Transactions'
 function App() {
 
   return (
-    <>
-      <h1>Tracker Transactions</h1>
+    <div className='App'>
+      <h1 className='App-header'>Expense Tracker</h1>
       <Budgets />
       <Transactions />
-    </>
+    </div>
   )
 }
 

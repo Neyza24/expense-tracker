@@ -1,12 +1,16 @@
+import {useSelector} from 'react-redux';
+import { selectBudgets } from '../store/slices/budgetsSlice';
 import Budget from "../components/Budget";
 
 
 const Budgets = () => {
+    const budgets = useSelector(selectBudgets);
+
     return (
         <ul className='comments-container'>
-            <Budget />
-            <Budget />
-            <Budget />
+            {
+                budgets.map( budget => <Budget key={budget.category} budget={budget}/>)
+            }
         </ul>
     )
 }

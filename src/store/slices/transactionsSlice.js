@@ -1,18 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CATEGORIES } from '../dataCategories';
 
-export const CATEGORIES = [
-    "housing",
-    "food",
-    "transportation",
-    "utilities",
-    "clothing",
-    "healthcare",
-    "personal",
-    "education",
-    "entertainment",
-];
-
-//transactions: { housing: [{category: 'housing', description: 'text', amount: 300, id: 123},...], food: [{category: 'food', description: 'text', amount: 300, id: 123}, {}, {}]}
 
 const initialState = Object.fromEntries(CATEGORIES.map( category => [category, []]));
 
@@ -26,10 +14,12 @@ export const transactionsSlice = createSlice({
         },
         deleteTransaction: (state, action) => {
             const {category, id} = action.payload;
-
-            state[category].filter( transaction => transaction.id !== id);
+            state[category] =  state[category].filter( transaction => transaction.id !== id);
         }
     }
 }); 
 
 export const { addTransaction, deleteTransaction } = transactionsSlice.actions;
+export const selectTransactions = (state) => state.transactions;
+export const selectFlattenedTransactions = (state) =>
+    Object.values(state.transactions).reduce((a, b) => [...a, ...b], []);

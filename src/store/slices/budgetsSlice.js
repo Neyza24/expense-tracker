@@ -1,16 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { CATEGORIES } from '../dataCategories';
 
-export const CATEGORIES = [
-    "housing",
-    "food",
-    "transportation",
-    "utilities",
-    "clothing",
-    "healthcare",
-    "personal",
-    "education",
-    "entertainment",
-];
 
 const initialState = CATEGORIES.map((category) => (
     {
@@ -18,7 +8,7 @@ const initialState = CATEGORIES.map((category) => (
         amount: 0
     }
 )
-); // output this logic [{category: 'perosnal', amount: 0}, {category: 'food', amount: 0}, ...]
+); 
 
 export const budgetsSlice = createSlice({
     name: 'budgets',
@@ -29,7 +19,7 @@ export const budgetsSlice = createSlice({
 
             const newBudget = state.find(budget => budget.category === category);
 
-            if (newBudget && newBudget > 0) {
+            if (newBudget) {
                 newBudget.amount = amount;
             }
         },
@@ -37,3 +27,4 @@ export const budgetsSlice = createSlice({
 });
 
 export const { updateBudget } = budgetsSlice.actions;
+export const selectBudgets = (state) => state.budgets;
